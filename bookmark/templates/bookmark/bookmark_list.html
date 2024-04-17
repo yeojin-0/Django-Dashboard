@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Django 북마크 List</title>
-</head>
-<body>
-<div id ="content">
-    <h1> 북마크 List </h1>
-    <ul>
-        {% for bookmark in object_list %}
-            <li><a href = "{{ bookmark.get_absolute_url }}">{{ bookmark.title }}</a></li>
-        {% endfor %}
+{% extends 'base.html' %}
+
+{% block title %}bookmark_list.html{% endblock %}
+
+{% block content %}
+
+<h1> 북마크 List </h1>
+<ul>
+    {% for bookmark in object_list %}
+        <li><a href = "{{ bookmark.get_absolute_url }}">{{ bookmark.title }}</a></li>
+    {% endfor %}
     </ul>
 </div>
-</body>
-</html>
+
+{% endblock %}
