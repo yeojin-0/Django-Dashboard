@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}home.html{% endblock %}
+
+{%block extra-style%}
+<style type="text/css">
+  .home-image {
+    background-image: url("{% static 'img/book.jpg' %}");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    height: 500px;
+    border-top: 10px solid #FFE65A;
+    border-bottom: 10px solid #FFE65A;
+    padding: 20px 0 0 20px;
+}
+.title {
+  color: #FF6A89;
+  font-weight: bold;
+}
+.powered {
+  position: relative;
+  top: 77%;
+  color: #FFE65A;
+  font-style: italic;
+}
+
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="home-image">
+  <h2 class="title">Django - 책 소개 사이트</h2>
+  <h4 class="powered"><i class="fas fa-arrow-circle-right"></i> powered by django and bootstrap.</h4>
+</div>
+
+<hr style="margin: 10px 0;">
+
+<div class="row text-center" style="margin-top: 10px;">
+  <div class="col-sm-6" style="background-color: #fef3e5; padding: 20px;">
+      <h3 style="color: #ff8800;">Bookmark App</h3>
+      <p style="color: #333;">Bookmark은 나중에 검색하기 위해 저장된 URI(Uniform Resource Identifier)입니다.
+          Bookmark 애플리케이션을 사용하여 자신만의 즐겨찾기를 저장할 수 있습니다.
+          또한 즐겨찾기를 업데이트하거나 삭제할 수도 있습니다.</p>
+  </div>
+  <div class="col-sm-6" style="background-color: #fde7f3; padding: 20px;">
+      <h3 style="color: #ff007f;">Blog App</h3>
+      <p style="color: #333;">이 애플리케이션은 일상 이벤트를 기록하거나 취미, 기술 등 자신의 관심사를 기록할 수 있게 합니다.
+          전형적인 블로그는 텍스트, 디지털 이미지 및 다른 블로그, 웹 페이지, 해당 주제와 관련된 기타 미디어로 이루어져 있습니다.</p>
+  </div>
+</div>
+{% endblock %}
+
+
+{%block footer %}
+<footer class="fixed-bottom bg-secondary">
+  <div class="text-white font-italic text-right mr-5">Copyright &copy; 2024 DjangoBook</div>
+</footer>
+{% endblock %}
