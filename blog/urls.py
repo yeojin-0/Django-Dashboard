@@ -3,7 +3,6 @@ from blog import views
 
 app_name = 'blog'
 urlpatterns = [
-    # /blog/
     path("", views.PostLV.as_view(), name="index"),
 
     # blog/post/ (same as /blog/) 리스트
@@ -28,4 +27,8 @@ urlpatterns = [
     
     # /blog/archive/<Today>
     path("archive/today/", views.PostTAV.as_view(), name="post_day_archive"),
+
+    path('tag/', views.TaggedObjectLV.as_view(), name='tag_cloud'),
+
+    path('tag/<str:tag>/', views.TaggedObjectLV.as_view(), name='tagged_object_list'),
 ]

@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "debug_toolbar",
     "bookmark.apps.BookmarkConfig", # 추가
-    "blog.apps.BlogConfig"
+    "blog.apps.BlogConfig",
+    "taggit.apps.TaggitAppConfig", # 추가
+    "taggit_templatetags2", # 추가 
 ]
 
 MIDDLEWARE = [
@@ -125,5 +127,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+TAGGIT_CASE_INSENSITIVE = True
+TAGGIT_LIMIT = 50
 
 

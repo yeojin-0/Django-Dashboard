@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from taggit.managers import TaggableManager
 
 class Post(models.Model):
     title = models.CharField(verbose_name='제목', max_length=50)
@@ -10,6 +11,7 @@ class Post(models.Model):
     content = models.TextField('내용')
     create_dt = models.DateTimeField('생성일', auto_now=True)
     modify_dt = models.DateTimeField("수정일", auto_now=True)
+    tags = TaggableManager(blank=True) # 추가
 
     # 메타데이터 설정
     class Meta:
