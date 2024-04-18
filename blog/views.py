@@ -1,9 +1,14 @@
-from typing import Any
 from blog.models import Post
 from django.views.generic import ListView, DetailView, TemplateView # 추가 
 from django.views.generic.dates import ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView
 from django.views.generic.dates import TodayArchiveView
 from django.conf import settings
+
+from django.views.generic import FormView
+from blog.forms import PostSearchForm
+from django.db.models import Q
+from django.shortcuts import render
+
 
 # ListView
 class PostLV(ListView):
@@ -66,3 +71,18 @@ class TaggedObjectLV(ListView):
         context = super().get_context_data(**kwargs)
         context['tagname'] = self.kwargs['tag']
         return context
+
+class SearchFormView(FormView): 
+    form_class = PostSearchForm 
+    template_name = 'blog/post_search.html' 
+
+    def form_valid(self, form): 
+        searchWord = form.cleaned_data['search_word']
+        post_list = Post.objects.filter(Q(title__icontains=searchWord) |  Q(description__icontains=searchWord) | Q(content__icontains=searchWord)).distinct()
+
+        context = {} 
+        context['form'] = form 
+        context['search_term'] = searchWord 
+        context['object_list'] = post_list 
+
+        return render(self.request, self.template_name, context)   # No Redirection
