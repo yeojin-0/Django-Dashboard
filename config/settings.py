@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "blog.apps.BlogConfig",
     "taggit.apps.TaggitAppConfig", # 추가
     "taggit_templatetags2", # 추가 
+    "photo.apps.PhotoAppConfig", # 추가
 ]
 
 MIDDLEWARE = [
